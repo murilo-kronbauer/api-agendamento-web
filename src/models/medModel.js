@@ -14,3 +14,5 @@ const Medicos = new Schema({
         required: true
     }
 })
+
+module.exports = model('Doctors', Medicos);
