@@ -16,7 +16,10 @@ module.exports = {
          const agendar = await agendarModel.create({
              data : req.body.date,
              nomePaciente : req.body.namePacient,
-             medico : req.body.medico
+             medico : req.body.medico,
+             first : req.body.first,
+             motivo : req.body.motivo,
+             planos : req.body.planos
          })
 
         return res.json(agendar);
@@ -27,16 +30,19 @@ module.exports = {
         const data = req.body.date;
         const nomePaciente = req.body.namePacient;
         const idMedico = req.body.idMedico;
+        const first = req.body.first;
+        const motivo = req.body.motivo;
+        const planos = req.body.planos;
 
         if(idMedico) {
             var agendar = await agendarModel.update({_id : id},
-                {data : data,nomePaciente : nomePaciente, 
+                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos,
                  medico : {_id:idMedico}});
-                 console.log("com medico")
+                 console.log("Com medico")
         } else {
             var agendar = await agendarModel.update({_id : id},
-                {data : data,nomePaciente : nomePaciente});
-                console.log("sem médico")
+                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos});
+                console.log("Sem médico")
         }
        
 

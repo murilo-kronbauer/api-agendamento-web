@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://admin:admin@mycluster-ltrgr.mongodb.net/clientes
         console.log("NÃO CONECTADO", err);
     }  else {
         app.listen(port, () => {
-            console.log("SERVER RUNNING ON PORT "+ port)
+            console.log("SERVER RUNNING ON localhost:"+ port)
         })
     }
 
