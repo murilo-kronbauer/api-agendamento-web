@@ -15,6 +15,18 @@ const Agendas = new Schema({
         ref: medModel,
         required: true
     }],
+    first : {
+        type:Boolean,
+        default : false
+    },
+    motivo : {
+        type : String,
+        required : false
+    },
+    planos : {
+        type: String,
+        default : "Nenhum"
+    }
 })
 
 module.exports = model('Agendamento', Agendas);
