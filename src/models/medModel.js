@@ -12,6 +12,14 @@ const Medicos = new Schema({
     nota : {
         type: Number,
         required: true
+    },
+    horario_disponiveis : {
+        type : Array,
+        default : [
+            "08:00:00",
+            "14:00:00",
+            "17:00:00"
+        ]
     }
 })
 

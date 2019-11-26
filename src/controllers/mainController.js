@@ -26,16 +26,26 @@ module.exports = {
 
     // PUT (ALTERA OS MÉDICOS)
     async put(req, res) {
-        const id = req.params.id;
+        console.log(req.body)
+        const id = req.params.id || "";
 
-        const name = req.body.name;
-        const spec = req.body.spec;
-        const rating = req.body.rating;
-        
-        var med = await medModel.update({_id : id}, {nome : name, especialidade : spec, nota : rating});
+        const name = req.body.name || "";
+        const spec = req.body.spec || "";
+        const rating = req.body.rating || "";
+        var dados = {
+            nome : name,
+            especialidade : spec,
+            nota : rating
+        }
 
-        return res.json(med);
-
+          if(name && spec && id) {
+            var med = await medModel.updateOne({_id : id}, {dados});
+            return res.json(dados);
+          } else {
+            var med = await medModel.updateOne({_id : id}, {nota : dados.nota});
+            console.log(dados.nota)
+              return res.json(med)
+          }
 
 
     },

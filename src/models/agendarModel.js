@@ -27,6 +27,9 @@ const Agendas = new Schema({
         type: String,
         default : "Nenhum"
     }
+    
+
+ 
 })
 
 module.exports = model('Agendamento', Agendas);
