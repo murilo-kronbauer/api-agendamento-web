@@ -11,8 +11,10 @@ router.delete('/med/:id', mainController.delete);
 
 // Routes Agendar
 router.get('/agendar', agendarController.index);
+router.get('/agendar/:idAgendamento', agendarController.getById);
 router.post('/agendar', agendarController.create);
 router.delete('/agendar/:id', agendarController.delete);
+router.get('/deletartudo', agendarController.deletarTudo);
 router.put('/agendar/:idAgendamento', agendarController.put);
 
 module.exports = router;

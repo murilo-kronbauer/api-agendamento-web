@@ -26,8 +26,12 @@ const Agendas = new Schema({
     planos : {
         type: String,
         default : "Nenhum"
+    },
+    horaAgendada : {
+        type: String,
+        required: true
     }
-    
+
 
  
 })

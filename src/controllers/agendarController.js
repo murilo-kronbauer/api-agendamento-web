@@ -10,6 +10,13 @@ module.exports = {
         return res.json(agendar)
     },
 
+    async getById(req, res) {
+        
+        const id = req.params.idAgendamento;
+        const agendar = await agendarModel.findOne({_id:id});
+        return res.json(agendar)
+    },
+
     async create(req, res) {
       console.log(req.body);
       
@@ -19,10 +26,16 @@ module.exports = {
              medico : req.body.medico,
              first : req.body.first,
              motivo : req.body.motivo,
-             planos : req.body.planos
+             planos : req.body.planos,
+             horaAgendada : req.body.hora
          })
 
         return res.json(agendar);
+    },
+
+    async deletarTudo(req, res) {
+        const response = await agendarModel.deleteMany()
+        return res.json(response);
     },
 
     async put(req, res) {
@@ -33,15 +46,16 @@ module.exports = {
         const first = req.body.first;
         const motivo = req.body.motivo;
         const planos = req.body.planos;
+        const hora = req.body.hora;
 
         if(idMedico) {
             var agendar = await agendarModel.update({_id : id},
-                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos,
+                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos, horaAgendada: hora,
                  medico : {_id:idMedico}});
                  console.log("Com medico")
         } else {
             var agendar = await agendarModel.update({_id : id},
-                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos});
+                {data : data,nomePaciente : nomePaciente, first : first, motivo : motivo, planos : planos, horaAgendada: hora});
                 console.log("Sem médico")
         }
        
