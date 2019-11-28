@@ -39,8 +39,8 @@ module.exports = {
         }
 
           if(name && spec && id) {
-            var med = await medModel.updateOne({_id : id}, {dados});
-            return res.json(dados);
+            var med = await medModel.updateOne({_id : id}, {nome : dados.nome, especialidade : dados.especialidade, nota: dados.nota});
+            return res.json(med);
           } else {
             var med = await medModel.updateOne({_id : id}, {nota : dados.nota});
             console.log(dados.nota)
